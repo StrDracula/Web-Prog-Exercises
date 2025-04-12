@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #ddd;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        fieldset {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+        }
+        legend {
+            color: #4CAF50;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .red {
+            color: red;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+        input, select, textarea {
+            background-color: #333;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #45a049;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body onload="getTime()">
+    <fieldset>
+        <legend>Test JavaScript Form Validation</legend>
+        <div style="text-align: right;">
+            <div id="time"></div>
+        </div>
+        <form onsubmit="return myfun()">
+            <table align="center">
+                <tr>
+                    <td>Name<span class="red">*</span></td>
+                    <td><input id="name" type="text"></td>
+                    <td id="id1" class="error">Please Enter your name!</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea id="addr"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Zip Code<span class="red">*</span></td>
+                    <td><input type="text" id="zip"></td>
+                    <td id="id3" class="error">Please Enter valid Zip Code</td>
+                </tr>
+                <tr>
+                    <td>Country<span class="red">*</span></td>
+                    <td>
+                        <select id="country">
+                            <option value="" hidden>Please select..</option>
+                            <option value="India">India</option>
+                            <option value="Australia">Australia</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="New Zealand">New Zealand</option>
+                        </select>
+                    </td>
+                    <td id="id4" class="error">Please Enter Country</td>
+                </tr>
+                <tr>
+                    <td>Phone<span class="red">*</span></td>
+                    <td><input type="text" id="phone"></td>
+                    <td id="id7" class="error">Please Enter valid Phone no.</td>
+                </tr>
+                <tr>
+                    <td>Email<span class="red">*</span></td>
+                    <td><input type="text" id="email"></td>
+                    <td id="id8" class="error">Please Enter valid Email</td>
+                </tr>
+                <tr>
+                    <td>Password<span class="red">*</span></td>
+                    <td><input type="password" id="pw"></td>
+                    <td id="id9" class="error">Please Enter valid Password</td>
+                </tr>
+                <tr>
+                    <td>Verify password<span class="red">*</span></td>
+                    <td><input type="password" id="pw2"></td>
+                    <td id="id10" class="error">Passwords do not match</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">SEND</button>
+                        <button type="reset">CLEAR</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    
+    <script>
+        function getTime() {
+            let timee = new Date().toLocaleTimeString();
+            document.getElementById("time").textContent = timee;
+            setTimeout(getTime, 1000);
+        }
+        
+        function myfun() {
+            let name = document.getElementById("name");
+            let nameError = document.getElementById("id1");
+            nameError.style.display = "none";
+            if (name.value.trim() === "" || name.value.trim().length > 15) {
+                nameError.style.display = "block";
+                name.focus();
+                return false;
+            }
+            
+            let zip = document.getElementById("zip");
+            let zipError = document.getElementById("id3");
+            zipError.style.display = "none";
+            let zipPattern = /^[0-9]{6}$/;
+            if (!zipPattern.test(zip.value)) {
+                zipError.style.display = "block";
+                zip.focus();
+                return false;
+            }
+            
+            let phone = document.getElementById("phone");
+            let phoneError = document.getElementById("id7");
+            phoneError.style.display = "none";
+            let phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone.value)) {
+                phoneError.style.display = "block";
+                phone.focus();
+                return false;
+            }
+            
+            let email = document.getElementById("email");
+            let emailError = document.getElementById("id8");
+            emailError.style.display = "none";
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email.value)) {
+                emailError.style.display = "block";
+                email.focus();
+                return false;
+            }
+            
+            let password = document.getElementById("pw");
+            let password2 = document.getElementById("pw2");
+            let passwordError = document.getElementById("id9");
+            let passwordMatchError = document.getElementById("id10");
+            passwordError.style.display = "none";
+            passwordMatchError.style.display = "none";
+            
+            if (password.value.length < 6 || password.value.length > 8) {
+                passwordError.style.display = "block";
+                password.focus();
+                return false;
+            }
+            if (password.value !== password2.value) {
+                passwordMatchError.style.display = "block";
+                password2.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

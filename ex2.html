@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>23BCE1652 - Sushil TR</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #ff9a9e, #fbc2eb, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: #210706eb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header h2 {
+      font-size: 1.3rem;
+      font-weight: normal;
+      margin-top: 10px;
+    }
+
+    .exercise-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .exercise-section a {
+      background-color: #080000;
+      padding: 15px 25px;
+      text-decoration: none;
+      color: rgb(242, 109, 7);
+      border-radius: 10px;
+      transition: 0.3s ease;
+      font-weight: bold;
+      backdrop-filter: blur(5px);
+    }
+
+    .exercise-section a:hover {
+      background-color: #00ff8850;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 500px) {
+      .exercise-section a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sushil Thrambakesh Ramkumar</h1>
+    <h2>23BCE1652</h2>
+    <h2>Lab Slot - L11+L12+L31+L32</h2>
+    <h2>Faculty - Jenila Livingston</h2>
+    <h2>Exercise 2</h2>
+  </header>
+
+  <div class="exercise-section">
+    <a href="nested.html" target="_blank">Nested Table</a>
+    <a href="lists.html" target="_blank">Lists</a>
+    <a href="testtable.html" target="_blank">Test Table</a>
+    <a href="timetable.html" target="_blank">Time Table</a>
+    <a href="expenses.html" target="_blank">Expenses</a>
+  </div>
+
+</body>
+</html>

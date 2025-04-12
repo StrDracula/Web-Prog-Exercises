@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        #bg {
+            background-color: #4CAF50;
+            height: 50px;
+            width: 250px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #bg:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter your date of birth</h1>
+    <input type="text" name="inp" id="dob" placeholder="dd/mm/yyyy">
+    <p id="age"></p>
+    <div id="bg">Hover to see your age</div>
+    
+    <script>
+        const testbox = document.getElementById("dob");
+        const dumb = document.getElementById("bg");
+        
+        dumb.addEventListener("mouseover", function() {
+            let y = testbox.value.split("/");
+            if (y.length === 3) {
+                let year = parseInt(y[2]);
+                if (!isNaN(year)) {
+                    let age = 2025 - year;
+                    dumb.innerHTML = `Your age is: ${age}`;
+                } else {
+                    dumb.innerHTML = "Invalid Date Format";
+                }
+            } else {
+                dumb.innerHTML = "Invalid Date Format";
+            }
+        });
+    </script>
+</body>
+</html>

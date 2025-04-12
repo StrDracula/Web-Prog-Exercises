@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        button {
+            width: 100px;
+            height: 45px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            filter: brightness(1.2);
+        }
+
+        button:nth-child(1) { background-color: green; }
+        button:nth-child(3) { background-color: red; }
+        button:nth-child(5) { background-color: yellow; color: black; }
+
+        p {
+            font-size: 80px;
+            font-weight: bold;
+            text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+  <h1 style="text-align: center; font-family: cursive; font-size: 70px;">Stopwatch</h1>
+    <button onclick="start()" style="background-color: blue; color: black;">Start</button>
+    <button onclick="stop()" style="color: black;">Stop</button>
+    <button onclick="reset()" style="color:#1e1e1e; background-color: chocolate;">Reset</button>
+    
+    <div>
+        <p id="id1">0:0:0</p>
+    </div>
+
+    <script>
+        let s = 0;
+        let m = 0;
+        let h = 0;
+        let p1 = document.getElementById("id1");
+        let timer1;
+        
+        function start() {
+            s++;
+            if (s > 60) {
+                s = s % 60;
+                m++;
+            }
+            if (m > 60) {
+                m = m % 60;
+                h++;
+            }
+            p1.innerHTML = `${h}:${m}:${s}`;
+            timer1 = setTimeout(start, 1000);
+        }
+
+        function stop() {
+            clearTimeout(timer1);
+            p1.innerHTML = `${h}:${m}:${s}`;
+        }
+
+        function reset() {
+            s = 0;
+            m = 0;
+            h = 0;
+            clearTimeout(timer1);
+            p1.innerHTML = `${h}:${m}:${s}`;
+        }
+    </script>
+</body>
+</html>

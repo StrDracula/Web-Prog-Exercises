@@ -1,0 +1,57 @@
+.no{
+  border-radius: 10px;
+}
+.no:hover{
+  background-color: rgb(82, 141, 162);
+  transition: 0.5s all ease;
+}
+td{
+  padding: 15px 30px;
+  background-color: white;
+  border-radius: 10%;
+  box-shadow: 0px 5px 0px rgb(119,168,186);
+}
+td:hover{
+  background-color: rgb(19, 124, 162);
+  transition: 0.5s all ease;
+}
+.c{
+  padding: 15px 30px;
+  background-color: rgb(254,159,170);
+  border-radius: 10%;
+  color: white;
+  box-shadow: 0px 5px 0px rgb(251, 134, 146);
+}
+.c:hover{
+  background-color: rgb(201, 107, 116);
+  transition: 0.2s all ease;
+}
+.one{
+  box-shadow: 0px 5px 0px rgb(92, 76, 162);;
+  padding: 15px 30px;
+  background-color: rgb(154,136,246);
+  border-radius: 10%;
+  color: white;
+}
+.one:hover{
+  background-color: rgb(19, 124, 162);
+  transition: 0.5s all ease;
+}
+.eq{
+  box-shadow: 0px 5px 0px rgb(158,168,82);;
+  padding: 15px 30px;
+  background-color: rgb(241,254,146);
+  border-radius: 10%;
+}
+.op{
+  padding: 15px 30px;
+  background-color: rgb(254,239,244);
+  border-radius: 25%;
+}
+.no{
+  background-color: rgb(125,167,189);
+  box-shadow: 0px -5px 0px rgb(116,162,179);;
+}
+table{
+  background-color: rgb(154,211,232);
+}

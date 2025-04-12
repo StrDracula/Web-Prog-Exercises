@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let reg=0;
+    let name=0;
+    function regi(){
+      reg=prompt("Enter Your Registration Number");
+      document.write(`<div style="border: red 10px solid; padding-bottom: 15px; padding-left: 30px; padding-right: 30px; background-color: aliceblue; text-align: center; margin: 10px 45%">${reg}</div>`);
+    }
+    function named(){
+      name=prompt("Enter Your Name")
+      document.getElementById("names").innerHTML=`<b>${name}</b>`
+    }
+  </script>
+</head>
+<body style="background-color: aliceblue;">
+  <p style="text-align: center;">
+    <button style="background-color: aqua; color: black; padding: 20px; margin: 20px;" onclick="regi()">Register Number</button><br>
+    <button style="background-color: aqua; color: black; padding: 20px; margin: 20px;" onclick="named()">Name</button>
+  </p>
+  <p style="text-align: center; color:red; font-size: xx-large;" id="names"></p>
+</body>
+</html>

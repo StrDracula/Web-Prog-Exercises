@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        .th{
+            color:black;
+        }
+    </style>
+    <script>
+        let h=0;
+        let c=0;
+        let out=0;
+        function hour(){
+            h=parseInt(prompt("Enter the Hours Work"));
+        }
+        function cost(){
+            c=parseInt(prompt("Enter the Cost Of Materials"));
+        }
+        function calc(){
+            out=45*h+c;
+            document.getElementById("output").innerHTML=`<h1 class="th">The total is Rs. ${out}</h1>`
+        }
+    </script>
+</head>
+<body style="color:black; background-color: rgb(252, 172, 142);">
+    <p style="text-align: center; font-size: 45px;">General Service Company</p>
+    <p style="text-align: center;">
+        <button style="padding: 20px; margin: 20px; color: coral;" id="hour" onclick="hour()"><h3>Hours Work</h3></button>
+        <button style="padding: 20px; margin: 20px; color: coral;" id="cost" onclick="cost()"><h3>Cost Of Materials</h3></button>
+    </p>
+    <p style="text-align: center;">
+        <button style="padding: 20px; margin: 20px; color: coral;" onclick="calc()"><h2>Calculate</h2></button>
+    </p>
+    <p id="output" style="text-align: center;">
+
+    </p>
+</body>
+</html>

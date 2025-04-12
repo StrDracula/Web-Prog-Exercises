@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 15vh;
+        }
+        label, input, button{
+            margin: 5px;
+        }
+        button {
+            padding: 20px;
+            background-color: black;
+            color: orange;
+            border: none;
+            cursor: pointer;
+        }
+        #dynamicButton {
+            background-color: red;
+            color: black;
+            padding: 10px;
+        }
+        #dynamictext {
+            background-color: green;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #changetxt {
+            text-align: center;
+            color: blue;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin: auto; text-align: center;">Magic Buttons</h1>
+    <div class="center-content">
+        <button id="butt1" onclick="create_table()">Click Me To Create a Table</button>
+    </div>
+    <br>
+    <div class="center-content">
+        <button id="butt2" onclick="create_button()">Click Me To Create a Button</button>
+    </div>
+    <br>
+    <div class="center-content">
+        <button id="butt3" onclick="create_textbox()">Click Me To Create a TextBox</button>
+    </div>
+    <div class="center-content">
+        <button id="butt4" onclick="create_inputlists()">Click Me To Create a List</button>
+    </div>
+    <div class="center-content">
+        <button id="butt5" onclick="create_inputfields()">Click Me To Create Input Fields</button>
+    </div>
+    <script>
+        function create_table(){
+            var table = document.createElement("table");
+            table.style.margin="auto";
+            table.style.padding="10px";
+            table.border='2';
+            table.cellPadding='5';
+            for(var i=0; i<3; i++){
+                var r1 = table.insertRow();
+                for(var j=0; j<3; j++){
+                    var c11 = r1.insertCell(j);
+                    let ans = prompt("Enter your text for the cell");
+                    c11.textContent = ans;
+                }
+            }
+            document.body.appendChild(table);
+        }
+        function create_button(){
+            var butt = document.createElement("button");
+            butt.id = "dynamicButton";
+            butt.textContent = "Mouse Over Me";
+            butt.addEventListener("mouseover", function(){
+                this.style.backgroundColor = "green";
+            });
+            var buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("center-content");
+            buttonContainer.appendChild(butt);
+            document.body.appendChild(buttonContainer);
+        }
+        function create_textbox(){
+            var txbx = document.createElement("input");
+            txbx.type = "text";
+            txbx.id = "dynamictext";
+            txbx.addEventListener("focus", function(){
+                this.style.backgroundColor = "yellow";
+            });
+            txbx.addEventListener("change", function(){
+                // Create a new paragraph element with the text
+                var p = document.createElement("p");
+                p.textContent = "Greetings HolyMan!";
+                p.id = "changetxt"; // Apply styling to the paragraph
+                document.body.appendChild(p);
+            });
+            txbx.addEventListener("blur",function(){
+                this.style.backgroundColor="green";
+            })
+            // Append the textbox to the document
+            var buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("center-content");
+            buttonContainer.appendChild(txbx);
+            document.body.appendChild(buttonContainer);
+        }
+        function create_inputlists(){
+            var container = document.createElement("div");
+            container.className = "center-content";
+            var label = document.createElement("label");
+            label.textContent = "Enter Text Here to add to the following list:";
+            var txbx = document.createElement("input");
+            txbx.type = "text";
+            txbx.id = "txtbox";
+            var button = document.createElement("button");
+            button.id = "butt";
+            button.textContent = "Double Click to add";
+            container.appendChild(label);
+            container.appendChild(txbx);
+            container.appendChild(button);
+            container.appendChild(document.createElement("br"));
+            document.body.appendChild(container);
+            var listContainer = document.createElement("div");
+            listContainer.className = "center-content";
+            var list = document.createElement("ul");
+            list.id = "list";
+            listContainer.appendChild(list);
+            document.body.appendChild(listContainer);
+            button.ondblclick = function() {
+                let input = txbx.value.trim();
+                if (input !== "") {
+                    let li = document.createElement("li");
+                    li.textContent = input;
+                    list.appendChild(li);
+                    txbx.value = "";
+                }
+            };
+        }
+        function create_inputfields(){
+            var container = document.createElement("div");
+            container.className = "center-content";
+            var label = document.createElement("label");
+            label.textContent = "Enter Text Here to count ";
+            var txbx1 = document.createElement("input");
+            txbx1.type = "text";
+            txbx1.id = "txtbox";
+            var txbx2 = document.createElement("input");
+            txbx2.type = "text";
+            txbx2.id = "txtbox";
+            txbx2.value=0;
+            txbx2.readOnly=true;
+            container.appendChild(label);
+            container.appendChild(txbx1);
+            container.appendChild(txbx2);
+            container.appendChild(document.createElement("br"));
+            document.body.appendChild(container);
+            txbx1.addEventListener("keyup", function() {
+                let count = parseInt(txbx2.value, 10) || 0;
+                txbx2.value = count + 1;
+            });
+        }
+    </script>
+</body>
+</html>

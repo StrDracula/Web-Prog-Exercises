@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>23BCE1652</title>
+  <script>
+    let f=5;
+    let s=5;
+    function calc(){
+      let n=document.getElementById("name").value.trim();
+      let c=parseInt(document.getElementById("cl").value);
+      if(!n){
+        alert("Please enter your name.");
+        return;
+      }
+      if(isNaN(c)|| (c!==1 && c!==2)){
+        alert("Invalid class. Enter 1 for First Class or 2 for Second Class");
+        return;
+      }
+      let out=document.getElementById("output");
+      if(c==1){
+        if(f!=0){
+          f=f-1;
+          let t1=5-f;
+          out.innerHTML=`Ticket Booking Successful!!<br>Name: ${n}<br>Seat Number: ${t1} (First Class)<br>`
+        }
+        else{
+          let c3 = confirm("First class is booked! Shall I allot you second class?");
+          if(c3){
+            if(s>0){
+              s=s-1;
+              let t2=10-s;
+              out.innerHTML=`Ticket Booking Successful!!<br>Name: ${n}<br>Seat Number: ${t2} (Second Class)<br>`
+            }
+            else{
+              alert("I am so sorry. All tickets are booked!");
+            }
+          }
+          else{
+            alert("Booking cancelled.")
+          }
+        }
+      }
+      else if(c==2){
+        if(s>0){
+          s=s-1;
+          let t2=10-s;
+          document.getElementById("output").value=`Ticket Booking Successful!!<br>Name: ${n}<br>Seat Number: ${t2} (Second Class)<br>`
+        }
+        else{
+          alert("I am so sorry. All tickets are booked!");
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Sakthi Airlines</h1>
+  <table style="margin: auto;" cellpadding="5px">
+    <tr>
+      <td>Name</td>
+      <td><input type="text" id="name" size="50"></td>
+    </tr>
+    <tr>
+      <td>Enter Class</td>
+      <td><input type="text" placeholder="Enter value as 1 for first class or 2 for second class" size="50" id="cl"></td>
+    </tr>
+  </table>
+  <p style="text-align: center;">
+    <button style="background-color: black; color: orange; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; padding: 10px;" onclick="calc()">Book</button>
+  </p>
+  <p id="output" style="text-align: center; font-weight: bold;"></p>
+</body>
+</html>

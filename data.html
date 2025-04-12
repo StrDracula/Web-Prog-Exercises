@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        .highlight {
+            font-weight: bold;
+            background-color: yellow;
+
+        }
+    </style>
+    <script>
+        let dict=[];
+        let min;
+        let max;
+        function input()
+        {
+            dict=[]
+            let table=`<table id="table1" border="1" cellspacing="0" cellpadding="3" width="50%">
+                <tr><td>P-Id</td><td>Name</td><td>Age</td></tr>`;
+            for(let k=0;k<8;k++){
+                let n=k+1;
+                let name=prompt(n+". Enter name: ");
+                let age=parseInt(prompt(n+". Enter age: "));
+                dict.push({pid:n,name:name,age:age});
+                table+=`<tr id="row${n}"><td>${n}</td><td>${name}</td><td>${age}</td></tr>`;
+            }
+            table += `</table> <br><button onclick="sort()">Sort</button> &nbsp; <button onclick="check()">Check</button> &nbsp; <button onclick="filterfun()">Filter</button> <p id="para2"></p> <p id="para3"></p>`;
+            document.getElementById("para1").innerHTML = table;
+        }
+        function sort()
+        {
+            let table2=`<h3>Sorted Data</h3><table id="table2" border="1" cellspacing="0" cellpadding="3" width="50%">
+                <tr><td>P-Id</td><td>Name</td><td>Age</td></tr>`;
+            dict.sort(function(a,b){return b.age - a.age});
+            for(let j=0;j<8;j++)
+            {
+                table2+=`<tr><td>${dict[j].pid}</td><td>${dict[j].name}</td><td>${dict[j].age}</td></tr>`;
+            }
+            table2+=`</table>`;
+            document.getElementById("para2").innerHTML=table2; 
+
+        }
+        function check()
+        {
+            let p=parseInt(prompt("Enter the pid to check: "));
+            let found=false;
+            for(let k=0;k<8;k++){
+                if(dict[k].pid==p){
+                    alert("P-ID found");
+                    document.getElementById(`row${p}`).classList.add("highlight");
+                    found=true;
+                }
+            }
+            if(!found){
+                alert("P-ID not found!");
+            }
+            
+        }
+        function filterfun()
+        {
+            min=parseInt(prompt("Enter minimum age: "));
+            max=parseInt(prompt("Enter maximum age: "));
+            if(isNaN(min) || isNaN(max) || max<min || min<0){
+                alert("Invalid age range! Please enter valid age range");
+                return;
+            }
+            let f=dict.filter(fun);
+            if(f.length==0){
+                alert("No records found!");
+                return;
+            }
+            let table3=`<h3>Filtered patients (Age ${min}-${max})</h3>
+    <table id="table3" border="1" cellspacing="0" cellpadding="3" width="50%">
+        <tr><td>P-Id</td><td>Name</td><td>Age</td></tr>`;
+            for(let l=0;l<f.length;l++){
+                table3+=`<tr><td>${f[l].pid}</td><td>${f[l].name}</td><td>${f[l].age}</td></tr>`;
+            }
+            table3+=`</table>`;
+            document.getElementById("para3").innerHTML=table3;
+        }
+        function fun(dict){
+            return dict.age>=min && dict.age<=max;
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <button onclick="input()">Enter input</button>
+    <p id="para1">
+
+    </p>
+    
+</body>
+</html>

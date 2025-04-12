@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1652</title>
+    <style>
+        .c2 img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        input[type="text"] {
+            padding: 3px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        div{
+            margin:auto;
+            border: solid 0.5px black;
+            align-items: center;
+            width: 35%;
+            height: 100%;
+            background-color: #36dc3661;
+    
+        }
+        
+    </style>
+    <script>
+        function submit(){
+            let w="<p align=center><h1>Recipit</h1>";
+            let name = document.getElementById("firstname").value + " " +
+            document.getElementById("secondname").value;
+            let phone = document.getElementById("ph1").value + " " +
+            document.getElementById("ph2").value;
+            let email = document.getElementById("eid").value;
+            let prod=[];
+            w+="<p>Customer name: "+name+"<br>Phone no. : "+phone+"<br>Email: "+email+"<br><br>";
+            let sno=0;
+            w+="<table border=1 cellspacing=0 cellpadding=3 width=50%><tr><th>S.no</th><th>Items</th><th>Quantity</th><th>Price</th><th>Total</th></tr>";
+            let total=0;
+            if(document.getElementById("apple").checked){
+                let q1=parseInt(document.getElementById("quan1").value);
+                let p1=10;
+                let t1=q1*p1;
+                total+=t1;
+                sno++;
+                w+="<tr><td>"+sno+"</td>"+"<td>Apple</td><td>"+q1+"</td><td>"+p1+"</td><td>"+t1+"</td></tr>";
+            }
+            if(document.getElementById("banana").checked){
+                let q2=parseInt(document.getElementById("quan2").value);
+                let p2=5;
+                let t2=q2*p2;
+                total+=t2;
+                sno++;
+                w+="<tr><td>"+sno+"</td>"+"<td>Banana</td><td>"+q2+"</td><td>"+p2+"</td><td>"+t2+"</td></tr>";
+            }
+            if(document.getElementById("avocado").checked){
+                let q3=parseInt(document.getElementById("quan3").value);
+                let p3=5;
+                let t3=q3*p3;
+                total+=t3;
+                sno++;
+                w+="<tr><td>"+sno+"</td>"+"<td>Avocado</td><td>"+q3+"</td><td>"+p3+"</td><td>"+t3+"</td></tr>";
+            }
+            w+="<tr><td></td><td></td><td></td><td>Grand Total</td><td>"+total+"</td></tr></table></p></p>";
+            document.write(w);
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="c1">
+        <h3 align="center">Grocery Order Form</h3>
+        <label>Customer Name<br>
+        <input type="text" name="" id="firstname"> &nbsp; 
+        <input type="text" id="secondname"></label><br><br>
+        <label>Phone Number<br>
+        <input type="text" name="" id="ph1"> &nbsp;
+        <input type="text" id="ph2"> <br><br></label>
+        <label>Email <br>
+            <input type="text" id="eid">
+        </label> <br> <br>
+    </div>
+    <div class="c2">
+        <h4>Product</h4>
+        <label><img src="apple.jpg" alt=""> &nbsp;
+        <input type="checkbox" name="" id="apple"> &nbsp; Apple
+        &nbsp; &nbsp; &nbsp; $10 &nbsp;
+        <input type="text" id="quan1"> &nbsp; kg
+        </label> <br>
+        <label><img src="banana.jpg" alt=""> &nbsp;
+        <input type="checkbox" name="" id="banana"> &nbsp; Banana
+        &nbsp; &nbsp;  $5 &nbsp; &nbsp;
+        <input type="text" id="quan2"> &nbsp; kg
+        </label> <br>
+        <label><img src="avocado.jpg" alt=""> &nbsp;
+        <input type="checkbox" name="" id="avocado"> &nbsp; Avocado
+        &nbsp; $7 &nbsp; &nbsp;
+        <input type="text" id="quan3"> &nbsp; kg
+        </label> <br> <br>
+        <p align="center">
+            <button onclick="submit()">Submit</button> <br>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <script>
+    function calc() {
+      let weight = parseFloat(document.getElementById("wt").value);
+      let feet = parseFloat(document.getElementById("ft").value) || 0;
+      let inches = parseFloat(document.getElementById("in").value) || 0;
+      let totalInches = (feet * 12) + inches;
+      let gender = document.getElementById("gen").value;
+      
+      if (weight <= 0 || totalInches <= 0) {
+        alert("Please enter valid weight and height values.");
+        return;
+      }
+      
+      let bmi = (weight / (totalInches * totalInches)) * 703;
+      document.getElementById("bmi").value = bmi.toFixed(2);
+      if(gender=="f"){
+        if(bmi>32.30){
+          document.getElementById("bmi_out").value = "Very Overweight or Obese";
+        }
+        else if(bmi>27.31){
+          document.getElementById("bmi_out").value = "Overweight";
+        }
+        else if(bmi>25.81){
+          document.getElementById("bmi_out").value = "Marginally Overweight";
+        }
+        else if(bmi>19.11){
+          document.getElementById("bmi_out").value = "Ideal Range";
+        }
+        else if(bmi>17.51){
+          document.getElementById("bmi_out").value = "Underweight";
+        }
+        else{
+          document.getElementById("bmi_out").value = "Anorexia";
+        }
+      }
+      if(gender=="m"){
+        if(bmi>31.10){
+          document.getElementById("bmi_out").value = "Very Overweight or Obese";
+        }
+        else if(bmi>27.81){
+          document.getElementById("bmi_out").value = "Overweight";
+        }
+        else if(bmi>26.41){
+          document.getElementById("bmi_out").value = "Marginally Overweight";
+        }
+        else if(bmi>20.71){
+          document.getElementById("bmi_out").value = "Ideal Range";
+        }
+        else if(bmi>17.501){
+          document.getElementById("bmi_out").value = "Underweight";
+        }
+        else{
+          document.getElementById("bmi_out").value = "Anorexia";
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <table style="margin: auto; font-family: 'Lucida Sans', sans-serif;" cellspacing="2" cellpadding="5" border="2">
+    <tr style="text-align: center;">
+      <td colspan="2">
+        <b>BMI Calculator</b>&nbsp;&nbsp;
+        <select id="gen">
+          <option value="m">Male</option>
+          <option value="f">Female</option>
+        </select>
+      </td>
+    </tr>
+    <tr style="text-align: center;">
+      <td colspan="2">
+        <b>Enter your Weight:</b><br>
+        (in pounds)&nbsp;<input type="number" id="wt" required>
+      </td>
+    </tr>
+    <tr style="text-align: center;">
+      <td colspan="2">
+        <b>Enter your Height:</b><br>
+        (feet)&nbsp;<input type="number" id="ft"><br><br>
+        (inches)&nbsp;<input type="number" id="in" required>
+      </td>
+    </tr>
+    <tr style="text-align: center;">
+      <td colspan="2">
+        <button onclick="calc()">Calculate</button>
+      </td>
+    </tr>
+    <tr>
+      <td><b>YOUR BMI</b></td>
+      <td><input type="text" readonly id="bmi" size="20"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="text" readonly id="bmi_out" size="35"></td>
+    </tr>
+  </table>
+</body>
+</html>
